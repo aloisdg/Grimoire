@@ -1,5 +1,4 @@
 <html>
-
 <head>
     <meta charset="UTF-8">
     <title>Print</title>
@@ -10,49 +9,10 @@
 
 <body>
     <div class="book">
-        <div class="page">
-            <div class="subpage">
-                <div class="card" id="app">
-                    <header class="sup content" v-bind:style="background">
-                        <h1>{{title}}</h1>
-                    </header>
-                    <figure id="img" class="sub content" v-bind:style="image"></figure>
-                    <figcaption class="sup content">
-                        <span>{{schoolFull}}</span>
-                    </figcaption>
-                    <main class="sub content" v-bind:style="background">
-                        <div id="PageContentDiv">
-                            <ul>
-                                <li><abbr title="Temps d'incantation">⌛</abbr><span>{{castingTime}}</span></li>
-                                <li><abbr title="Composantes"></abbr><span>{{components}}</span></li>
-                                <li><abbr title="Portée"></abbr><span>{{range}}</span></li>
-                                <li><abbr title="Effet"></abbr><span>{{effect}}</span></li>
-                                <li><abbr title="Zone d'effet"></abbr><span>{{zone}}</span></li>
-                                <li><abbr title="Cible"></abbr><span>{{target}}</span></li>
-                                <li><abbr title="Durée"></abbr><span>{{duration}}</span></li>
-                                <li><abbr title="Jet de sauvegarde"></abbr><span>{{savingThrow}}</span></li>
-                                <li><abbr title="Résistance à la magie">⛊</abbr><span>{{spellResistance}}</span></li>
-                            </ul>
-                            <hr />
-                            <span>{{summary}}</span>
-                        </div>
-                    </main>
-                </div>
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-            </div>
-        </div>
-        <div class="page">
-            <div class="subpage">Page 2/2</div>
-        </div>
+        <page></page>
+        <page></page>
+        <page></page>
     </div>
     <script src="script/objTmp.js"></script>
 </body>
-
 </html>
