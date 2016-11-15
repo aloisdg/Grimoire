@@ -1,31 +1,47 @@
+function chunk(chunkSize, array) {
+    return array.reduce(function(previous, current) {
+        let chunk;
+        if (previous.length === 0 ||
+                previous[previous.length - 1].length === chunkSize) {
+            chunk = [];   // 1
+            previous.push(chunk);   // 2
+        }
+        else
+            chunk = previous[previous.length -1];   // 3
+        chunk.push(current);   // 4
+        return previous;   // 5
+    }, []);   // 6
+}
+
 // 
 // Segoe MDL2 Assests
-var time = {
-    color: '#265E47',
-    title: 'Arrêt du temps',
-    school: 'Transmutation',
-    schoolFull: 'Transmutation',
-    effect: 'Seul le PJ peut agir pendant 1d4+1 rounds.',
-    image: {
-        backgroundImage: "url('time.jpg')"
-    },
-    background: {
-        backgroundImage: "url('Transmutation.svg')"
-    }
-};
-var fireball = {
-    color: '#265E47',
-    title: 'Boule de feu',
-    school: 'Evocation',
-    schoolFull: 'Évocation (feu)',
-    effect: "1d6 points de dégâts de feu/niveau, 6 m de rayon.",
-    image: {
-        backgroundImage: "url('fireball.jpg')"
-    },
-    background: {
-        backgroundImage: "url('Evocation.svg')"
-    }
-};
+// var time = {
+//     color: '#265E47',
+//     title: 'Arrêt du temps',
+//     school: 'Transmutation',
+//     schoolFull: 'Transmutation',
+//     effect: 'Seul le PJ peut agir pendant 1d4+1 rounds.',
+//     image: {
+//         backgroundImage: "url('time.jpg')"
+//     },
+//     background: {
+//         backgroundImage: "url('Transmutation.svg')"
+//     }
+// };
+// var fireball = {
+//     color: '#265E47',
+//     title: 'Boule de feu',
+//     school: 'Evocation',
+//     schoolFull: 'Évocation (feu)',
+//     effect: "1d6 points de dégâts de feu/niveau, 6 m de rayon.",
+//     image: {
+//         backgroundImage: "url('fireball.jpg')"
+//     },
+//     background: {
+//         backgroundImage: "url('Evocation.svg')"
+//     }
+// };
+
 // http://www.pathfinder-fr.org/Wiki/Pathfinder-RPG.Mains%20br%c3%bblantes.ashx
 // http://www.pathfinder-fr.org/Wiki/Pathfinder-RPG.Voile%20du%20paradis.ashx
 var door = {
@@ -53,60 +69,36 @@ var door = {
 };
 
 Vue.component('card', {
-    template: `<div class="card" id="app">
-                    <header class="sup content" v-bind:style="background">
-                        <h1>{{title}}</h1>
-                    </header>
-                    <figure id="img" class="sub content" v-bind:style="image"></figure>
-                    <figcaption class="sup content">
-                        <span>{{schoolFull}}</span>
-                    </figcaption>
-                    <main class="sub content" v-bind:style="background">
-                        <div id="PageContentDiv">
-                            <ul>
-                                <li><abbr title="Temps d'incantation">⌛</abbr><span>{{castingTime}}</span></li>
-                                <li><abbr title="Composantes"></abbr><span>{{components}}</span></li>
-                                <li><abbr title="Portée"></abbr><span>{{range}}</span></li>
-                                <li><abbr title="Effet"></abbr><span>{{effect}}</span></li>
-                                <li><abbr title="Zone d'effet"></abbr><span>{{zone}}</span></li>
-                                <li><abbr title="Cible"></abbr><span>{{target}}</span></li>
-                                <li><abbr title="Durée"></abbr><span>{{duration}}</span></li>
-                                <li><abbr title="Jet de sauvegarde"></abbr><span>{{savingThrow}}</span></li>
-                                <li><abbr title="Résistance à la magie">⛊</abbr><span>{{spellResistance}}</span></li>
-                            </ul>
-                            <hr />
-                            <span>{{summary}}</span>
-                        </div>
-                    </main>
-                </div>`,
-    data: function () {
-        return door;
+    template: '#card-template',
+    replace: true,
+    props: {
+        spell: Object
     }
 });
 
 Vue.component('page', {
-    template: `
-    <div class="page">
-    <div class="subpage">
-                <card></card>
-                <card></card>
-                <card></card>
-                <card></card>
-                <card></card>
-                <card></card>
-                <card></card>
-                <card></card>
-                <card></card>
-    </div></div>`
-                // ,
-    // data: function () {
-    //     return door;
-    // }
+    template: '#page-template',
+    replace: true,
+    props: {
+        collection: Array
+    }
 });
 
+Vue.component('book', {
+    template: '#book-template',
+    replace: true,
+    props: {
+        yolo: Array
+    }
+});
 
-var app = new Vue({
-    el: '.book'
+let spells = chunk(9, Array.from({length: 20}, () => door));
+
+new Vue({
+    el: '.book',
+    data: {
+        co: spells
+    }
     //   el: '#app',
     //   data: door,
     //     components: {
@@ -114,3 +106,31 @@ var app = new Vue({
     //     'my-component': Child
     //   }
 });
+
+
+// function loadJSON(callback) {
+//     var xobj = new XMLHttpRequest();
+//     xobj.overrideMimeType("application/json");
+//     xobj.open('GET', 'script/spells.json', true); // Replace 'my_data' with the path to your file
+//     xobj.onreadystatechange = function () {
+//         if (xobj.readyState == 4 && xobj.status == "200") {
+//             // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
+//             callback(xobj.responseText);
+//         }
+//     };
+//     xobj.send(null);
+// }
+
+// function init() {
+//     loadJSON(function (response) {
+//         // Parse JSON string into object
+//         var spells = JSON.parse(response);
+
+//         // for (var i = 0; i < spells.Spells.length; i++) {
+//         //     console.log(spells.Spells[i].Name + " (" + spells.Spells[i].School+ ")");
+//         // }
+
+//     });
+// }
+
+// init();

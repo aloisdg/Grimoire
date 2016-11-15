@@ -10,37 +10,61 @@
 </head>
 
 <body>
-    <div class="book">
-        <page></page>
-        <page></page>
-        <page></page>
-    </div>
-    <script src="script/objTmp.js"></script>
-    <script>
-
-
-var request = new XMLHttpRequest();
-request.open('GET', '/my/url', true);
-
-request.onload = function() {
-  if (request.status >= 200 && request.status < 400) {
-    // Success!
-    var data = JSON.parse(request.responseText);
-  } else {
-    // We reached our target server, but it returned an error
-
-  }
-};
-
-request.onerror = function() {
-  // There was a connection error of some sort
-};
-
-request.send();
-
-
+    <script type="text/x-template" id="card-template">
+        <div class="card" id="app">
+            <header class="sup content" v-bind:style="spell.background">
+                <h1>{{spell.title}}</h1>
+            </header>
+            <figure id="img" class="sub content" v-bind:style="spell.image"></figure>
+            <figcaption class="sup content">
+                <span>{{spell.schoolFull}}</span>
+            </figcaption>
+            <main class="sub content" v-bind:style="spell.background">
+                <div id="PageContentDiv">
+                    <ul>
+                        <li><abbr title="Temps d'incantation">⌛</abbr><span>{{spell.castingTime}}</span></li>
+                        <li><abbr title="Composantes"></abbr><span>{{spell.components}}</span></li>
+                        <li><abbr title="Portée"></abbr><span>{{spell.range}}</span></li>
+                        <li><abbr title="Effet"></abbr><span>{{spell.effect}}</span></li>
+                        <li><abbr title="Zone d'effet"></abbr><span>{{spell.zone}}</span></li>
+                        <li><abbr title="Cible"></abbr><span>{{spell.target}}</span></li>
+                        <li><abbr title="Durée"></abbr><span>{{spell.duration}}</span></li>
+                        <li><abbr title="Jet de sauvegarde"></abbr><span>{{spell.savingThrow}}</span></li>
+                        <li><abbr title="Résistance à la magie">⛊</abbr><span>{{spell.spellResistance}}</span></li>
+                    </ul>
+                    <hr />
+                    <span>{{spell.summary}}</span>
+                </div>
+            </main>
+            <div id="level" class="content">
+                <span>1</span>
+            </div>
+        </div>
     </script>
 
+    <script type="text/x-template" id="page-template">
+        <div class="page">
+            <div class="subpage">
+                <div v-for="item in collection">
+                    <card :spell="item"></card>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script type="text/x-template" id="book-template">
+        <div>
+            <div v-for="item in yolo">
+                <page :collection="item"></page>
+            </div>
+        </div>
+    </script>
+
+    <div class="book">
+        <book :yolo="co"></book>
+    </div>
+
+    <script src="script/objTmp.js"></script>
 </body>
 
 </html>
