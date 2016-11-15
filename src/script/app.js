@@ -20,7 +20,7 @@ const door = {
         backgroundImage: "url('https://cdna2.artstation.com/p/assets/images/images/002/509/550/large/edgar-ovalles-b08finalbattlemagefinalartstt05062016-012.jpg?1462541356')"
     },
     background: {
-        backgroundImage: "url('Conjuration.svg')"
+        backgroundImage: "url('style/icons/conjuration.svg')"
     }
 };
 
