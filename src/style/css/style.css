@@ -37,7 +37,7 @@ body {
     size: A4;
     margin: 0;
 }
-@media print {
+/*@media print {
     html,
     body {
         width: 210mm;
@@ -53,7 +53,7 @@ body {
         background: initial;
         page-break-after: always;
     }
-}
+}*/
 /*.card {
     width: 63mm;
     height: 88mm;
