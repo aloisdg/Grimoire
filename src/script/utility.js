@@ -13,6 +13,6 @@ function chunk(chunkSize, array) {
     }, []);
 }
 
-function repeat(item) {
-    return Array.from({ length: 20 }, () => item)
+function repeat(item, length) {
+    return Array.from({ length: length }, () => item)
 }

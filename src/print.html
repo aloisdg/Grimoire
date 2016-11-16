@@ -31,14 +31,14 @@
                         <li><abbr title="Cible"></abbr><span>{{spell.target}}</span></li>
                         <li><abbr title="Durée"></abbr><span>{{spell.duration}}</span></li>
                         <li><abbr title="Jet de sauvegarde"></abbr><span>{{spell.savingThrow}}</span></li>
-                        <li><abbr title="Résistance à la magie">⛊</abbr><span>{{spell.spellResistance}}</span></li>
+                        <li v-if="spell.spellResistance"><abbr title="Résistance à la magie">⛊</abbr><span>{{spell.spellResistance}}</span></li>
                     </ul>
                     <hr />
                     <span>{{spell.summary}}</span>
                 </div>
             </main>
             <div id="level" class="content">
-                <span>1</span>
+                <span>{{spell.level}}</span>
             </div>
         </div>
     </script>
@@ -67,6 +67,7 @@
 
     <script src="script/utility.js"></script>
     <script src="script/print.js"></script>
+
 </body>
 
 </html>
