@@ -191,6 +191,10 @@ body {
     color: #1a1a1a;
 }
 
+.card hr {
+    margin: 1mm 0 0.5mm;
+}
+
 .card #level {
     font: 400 18px/18px 'MPlantin', Times, serif;
     width:6mm;
