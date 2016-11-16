@@ -132,3 +132,5 @@ function init() {
 }
 
 init();
+
+// remove content inside (...). We can see it as a superflus comment.
