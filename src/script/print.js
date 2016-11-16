@@ -60,10 +60,10 @@ for (var i = 0; i < book.length; i++) {
         summary: book[i].summary,
         castingTime: book[i].castingTime,
         components: JSON.parse(book[i].components).Kinds.split(', ').map(x => x[0]).join(', '), // why components is a string instead of {}?
-        range: JSON.parse(book[i].range).Unit, // wtf not a json?
+        range: book[i].range ? JSON.parse(book[i].range).Unit : book[i].range, // wtf not a json?
         effect: 'vague de 3 m (2 c) de profondeur',
         zone: 'rayonnement en forme de cône',
-        target: JSON.parse(book[i].target).Value,
+        target: book[i].target ? JSON.parse(book[i].target).Value : book[i].target,
         duration: 'instantanée',
         savingThrow: book[i].savingThrow,
         spellResistance: book[i].spellResistance,
