@@ -100,7 +100,7 @@ body {
 }
 .card .content {
     background-color: #f1e9d2;
-    border: 0.7mm ridge gold;
+    border: 0.75mm ridge gold;
     box-sizing: border-box;
     position: relative;
 }
