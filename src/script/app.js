@@ -124,7 +124,10 @@ function init() {
             el: '#demo',
             data: {
                 searchQuery: '',
-                gridColumns: ['name', 'school', 'levels', 'castingTime', 'spellResistance', 'savingThrow', 'range', 'target', 'components', 'summary'],
+                gridColumns: ['name', 'school', 'levels',
+                    'castingTime', 'spellResistance', 'savingThrow',
+                    'range', 'target', 'components',
+                    'summary'],
                 gridData: data
             }
         })
