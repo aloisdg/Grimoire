@@ -52,18 +52,7 @@ Vue.component('demo-grid', {
         select: function (spell) {
             cart[spell.name] = cart.hasOwnProperty(spell.name) ? cart[spell.name] + 1 : 1
             document.querySelector('#test').innerHTML = Object.keys(cart).map(item => "<br/>- " + item + " x" + cart[item])
-
-
             printList.push(JSON.stringify(spell));
-
-            // for(key in cart){
-            //   var value = cart[key];
-            //   for (var valueIndex = 0; valueIndex < value; valueIndex++) {
-            //     printList.push(key);
-            //   }
-            // }
-
-            document.querySelector('#printButton').href = "print.html?" + encodeURIComponent(JSON.stringify(printList))
         }
     }
 })
@@ -78,10 +67,9 @@ let printList = [];
 function loadJSON(callback) {
     var xobj = new XMLHttpRequest();
     xobj.overrideMimeType("application/json");
-    xobj.open('GET', 'script/spells.json', true); // Replace 'my_data' with the path to your file
+    xobj.open('GET', 'script/spells.json', true);
     xobj.onreadystatechange = function () {
         if (xobj.readyState == 4 && xobj.status == "200") {
-            // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
             callback(xobj.responseText);
         }
     };
@@ -129,6 +117,12 @@ function init() {
                     'range', 'target', 'components',
                     'summary'],
                 gridData: data
+            },
+            methods: {
+                print: function (event) {
+                    localStorage.setItem('book', JSON.stringify(printList));
+                    document.location = 'print.html';
+                }
             }
         })
     });

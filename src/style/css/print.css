@@ -81,7 +81,7 @@ body {
     color: #1a1a1a;
     box-sizing: border-box;
     /*display: inline-block;*/
-    margin: 1;
+    margin: 1; /*todo*/
     float: left;
     position: relative;
 }
@@ -169,12 +169,10 @@ body {
 
 .card ul {
     list-style: none;
-    list-style-position: 0;
 }
 
 .card ul li {
     list-style: none;
-    list-style-position: 0;
 }
 
 .card abbr {

@@ -25,7 +25,7 @@ Vue.component('book', {
     }
 });
 
-var book = JSON.parse(decodeURIComponent(window.location.search.substring(1))).map(spell => JSON.parse(spell));
+var book = JSON.parse(localStorage.getItem('book')).map(spell => JSON.parse(spell));
 book.forEach(spell => console.log(spell.name + " (" + spell.school + ")"))
 
 var k = [];
