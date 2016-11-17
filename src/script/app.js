@@ -95,6 +95,9 @@ function init() {
 
         // Appel cacophonique de groupe summary is empty
 
+        // why saving throw is sometimes equals to `{}` and sometimes empty.
+        // What is the logic behind?
+
         const data = spells.map(spell => ({
             name: spell.Name,
             school: spell.School,
