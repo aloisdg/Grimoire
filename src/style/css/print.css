@@ -173,6 +173,7 @@ body {
 
 .card ul li {
     list-style: none;
+    margin: 0.75mm 0;
 }
 
 .card abbr {
