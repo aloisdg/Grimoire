@@ -81,7 +81,7 @@ body {
     color: #1a1a1a;
     box-sizing: border-box;
     /*display: inline-block;*/
-    margin: 1; /*todo*/
+    margin: 0.25mm;
     float: left;
     position: relative;
 }
