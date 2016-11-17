@@ -183,6 +183,7 @@ body {
     text-decoration: none;
     cursor: default;
     text-align: center;
+    margin-right: 0.5mm;
 }
 
 .card a {
