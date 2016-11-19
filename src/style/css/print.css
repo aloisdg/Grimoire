@@ -75,7 +75,7 @@ body {
     width: 63mm;
     height: 88mm;
     background-color: #1a1a1a;
-    background: url('../images/body.png');
+    /*background: url('../images/body.png');*/
     box-sizing: border-box;
     border: 2mm solid #000;
     color: #1a1a1a;
@@ -84,11 +84,19 @@ body {
     margin: 0.25mm;
     float: left;
     position: relative;
+    overflow: hidden;
 }
 
 .card * {
     margin: 0;
     padding: 0;
+}
+
+.card img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 0;
 }
 
 .card .content {
@@ -110,8 +118,12 @@ body {
     z-index: 2;
 }
 
-.card header {
+.card figcaption, .card main, .card header {
+    overflow: hidden;
     position: relative;
+}
+
+.card header {
     background-repeat: no-repeat;
     background-position: center right;
 }
@@ -119,6 +131,13 @@ body {
 .card header h1,
 .card figcaption {
     padding-left: 1mm;
+}
+
+.card header h1,
+.card figcaption span,
+.card #PageContentDiv {
+    z-index: 1;
+    position: relative;
 }
 
 .card header h1 {
@@ -163,9 +182,9 @@ body {
     background-position: center;
 }
 
-.card main > div {
+/*.card main > div {
     height: 50%;
-}
+}*/
 
 .card ul {
     list-style: none;
@@ -205,4 +224,11 @@ body {
     text-align:center;
     color: #1a1a1a;
     border-radius: 30% 2px;
+}
+
+.centered {
+    width: 46mm;
+    margin: auto;
+    right: 0;
+    bottom: 0;
 }

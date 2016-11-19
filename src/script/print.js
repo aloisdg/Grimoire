@@ -44,12 +44,11 @@ for (var i = 0; i < book.length; i++) {
         duration: 'instantanée',
         savingThrow: book[i].savingThrow,
         spellResistance: book[i].spellResistance,
-        image: {
-            backgroundImage: "url('https://cdna2.artstation.com/p/assets/images/images/002/509/550/large/edgar-ovalles-b08finalbattlemagefinalartstt05062016-012.jpg?1462541356')"
-        },
+        image: 'https://cdna2.artstation.com/p/assets/images/images/002/509/550/large/edgar-ovalles-b08finalbattlemagefinalartstt05062016-012.jpg?1462541356',
         background: {
             backgroundImage: "url('style/icons/" + book[i].school.toLowerCase() + ".svg')"
         },
+        schoolImage: 'style/icons/' + book[i].school.toLowerCase() + '.svg',
         level: book[i].levels[0].Level
     });
 }

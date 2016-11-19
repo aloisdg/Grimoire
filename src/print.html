@@ -12,14 +12,21 @@
 <body>
     <script type="text/x-template" id="card-template">
         <div class="card" id="app">
+            <img src="style/images/fullbody.png">
             <header class="sup content" v-bind:style="spell.background">
+                <img src="http://images.naldzgraphics.net/2014/07/1-certificate-paper-texture.jpg" />
                 <h1>{{spell.title}}</h1>
             </header>
-            <figure id="img" class="sub content" v-bind:style="spell.image"></figure>
+            <figure id="img" class="sub content">
+                <img v-bind:src="spell.image" style="object-fit: cover;width: 100%;height: 100%;">
+            </figure>
             <figcaption class="sup content">
+                <img src="http://images.naldzgraphics.net/2014/07/1-certificate-paper-texture.jpg" />
                 <span>{{spell.schoolFull}}</span>
             </figcaption>
             <main class="sub content" v-bind:style="spell.background">
+                <img src="http://images.naldzgraphics.net/2014/07/1-certificate-paper-texture.jpg" />
+                <img v-bind:src="spell.schoolImage" class="centered"  />
                 <div id="PageContentDiv">
                     <ul>
                         <li><abbr title="Temps d'incantation">⌛</abbr><span>{{spell.castingTime}}</span></li>
